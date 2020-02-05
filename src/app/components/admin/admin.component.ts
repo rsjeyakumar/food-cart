@@ -23,11 +23,11 @@ export class AdminComponent implements OnInit {
     // tslint:disable-next-line: max-line-length
     this.elementRef.nativeElement.ownerDocument.body.style.background = 'linear-gradient(to right bottom, #cfcbc9 ,#ff6200,#ff6200,#cfcbc9) fixed center';
     /* Check whether login/not */
-    if (!this.foodService.validUser()) {
-      this.router.navigate(['/login']);
-    } else {
-      this.router.navigate(['/dashboard']);
-    }
+    // if (!this.foodService.validUser()) {
+    //   this.router.navigate(['/login']);
+    // } else {
+    //   this.router.navigate(['/dashboard']);
+    // }
   }
 
 }
