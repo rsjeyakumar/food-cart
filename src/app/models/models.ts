@@ -14,5 +14,14 @@ export interface FlightListResponse {
     flightDetails: Search[];
     statusCode: number;
     message: string;
+}
 
+export interface VendorListResponse {
+    vendorList: VendorList[];
+    statusCode: number;
+    message: string;
+}
+export interface VendorList {
+    vendorName: string;
+    vendorId: number;
 }
