@@ -4,8 +4,10 @@
     color: #fff;
     opacity: 0.5;
     bottom: 64px;
-    margin-bottom: -64px !important;    
+    margin-bottom: -64px !important;  
+      
 }
 .card-body:hover{
     opacity: 1;
+    cursor:pointer;
 }
