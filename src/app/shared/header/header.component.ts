@@ -29,14 +29,6 @@ export class HeaderComponent implements OnInit {
     });
   }
 
-  getIfAlreadyLogged() {
-    const user = JSON.parse(sessionStorage.getItem('currentUser'));
-    if (user) {
-      /* send message to subscribers via observable subject */
-      this.messageService.sendMessage(user);
-    }
-  }
-
   goToCancelTickets() {
     this.router.navigate(['/cancel']);
   }
@@ -45,12 +37,11 @@ export class HeaderComponent implements OnInit {
   logout(): void {
     sessionStorage.clear();
     this.messageService.clearMessages();
-    this.router.navigate(['/search']);
+    this.router.navigate(['/login']);
   }
-  
+
   ngOnInit() {
     this.getLoginUser();
-    this.getIfAlreadyLogged();
   }
 
   // tslint:disable-next-line: use-lifecycle-interface
