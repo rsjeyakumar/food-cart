@@ -3,6 +3,7 @@ import { FoodCartService } from './../../../services/food-cart.service';
 import { MenuList, MenuListResposne } from '../../../models/models';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Orders, OrderMenu } from './../../../models/models';
 
 @Component({
   selector: 'app-menus',
@@ -18,6 +19,7 @@ export class MenusComponent implements OnInit {
   netPay: number;
   subtotal = 0;
   checkoutForm: FormGroup;
+  placeorder: Orders;
   cart = [];
   constructor(
     private foodServices: FoodCartService,
@@ -25,38 +27,31 @@ export class MenusComponent implements OnInit {
     private formBuilder: FormBuilder
   ) { }
 
+  changeQuantity(menu, e) {
+    let obj = this.cart.findIndex(o => o.menuId === menu.menuId);
+    if (obj !== -1) {
+      this.cart[obj].quantity = e.target.value;
+      this.cart[obj].quantityPrice = this.cart[obj].quantity * this.cart[obj].menuPrice;
+    }
+    this.subTotal();
+  }
+
   addToCart(menu) {
     const addmenu = menu;
-    let obj = [];
-    
-    // tslint:disable-next-line: align
-    obj = this.cart.find(o => o.menuId === addmenu.menuId);
-    if (obj) {
-      // this.cart.forEach(
-      //   (itme) => {
-      //     if (itme.menuId === addmenu.menuId) {
-      //       itme.quantity = itme.quantity + 1;
-      //       itme.menuPrice = itme.menuPrice * itme.quantity;
-      //       this.subtotal = this.subtotal + itme.menuPrice;
-      //       console.log(this.subtotal+"subtotal===");
-      //       console.log(menu.menuPrice+"currnt price===");
-      //     }
-      //   }
-      // );
-      for (let i = 0; i <= this.cart.length; i++) {
-        if (this.cart[i].menuId === addmenu.menuId){
-          this.cart[i].quantity = this.cart[i].quantity + 1;
-          this.cart[i].menuPrice = this.cart[i].menuPrice * this.cart[i].quantity;
-          this.subtotal = this.subtotal + this.cart[i].menuPrice;
-        }
-      }
+    let obj;
 
+    // tslint:disable-next-line: align
+    obj = this.cart.findIndex(o => o.menuId === addmenu.menuId);
+    if (obj !== -1) {
+      this.cart[obj].quantity += 1;
+      this.cart[obj].quantityPrice = this.cart[obj].quantity * this.cart[obj].menuPrice;
     } else {
       addmenu.quantity = 1;
-      this.subtotal = this.subtotal + addmenu.menuPrice;
+      addmenu.quantityPrice = addmenu.menuPrice;
       this.cart.push(addmenu);
     }
     this.loader = true;
+    this.subTotal();
   }
 
   removeCart(menuId) {
@@ -66,8 +61,6 @@ export class MenusComponent implements OnInit {
         (itme, index) => {
           if (itme.menuId === menuId) {
             this.cart.splice(index, 1);
-            console.log(this.subtotal+"subtotal===");
-            console.log(itme.menuPrice+"currnt price===");
             this.subtotal = this.subtotal - itme.menuPrice;
           }
         }
@@ -75,10 +68,37 @@ export class MenusComponent implements OnInit {
     }
   }
 
-  showMyCart() {
+  placeOrder() {
 
+    let menuList =this.cart;
+
+    menuList.forEach(
+      (item) => {
+        menuList.quantity=menuList.quantityPrice;
+        delete menuList.menuName;
+        delete menuList.menuPrice;
+        delete menuList.quantityPrice;
+      }
+    );
+
+    this.placeorder = {
+      vendorId: 6,
+      menuList: menuList,
+      paymentType: 'Paytem'
+    };
+    this.foodServices.payment(this.placeOrder, 4).subscribe(
+      res => {
+
+      }
+    )
   }
 
+  subTotal() {
+    this.subtotal = this.cart.reduce((total, currentValue) => {
+      return total + currentValue.quantityPrice;
+    }, 0);
+
+  }
 
 
   /*
