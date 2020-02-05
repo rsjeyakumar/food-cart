@@ -1,1 +1,63 @@
-<p>login works!</p>
+<section>
+    <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="https://previews.123rf.com/images/srapulsar38/srapulsar381801/srapulsar38180103273/92824630-variety-of-pizzas-with-sauces-on-a-rustic-background-.jpg" class="d-block w-100" alt="image1">
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+</section>
+<section class="search-sec">
+    <div class="container">
+        <form [formGroup]="loginForm" (ngSubmit)="validateLogin();">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="row">                       
+                        <div class="col-lg-4 col-md-4 col-sm-12 p-0">
+                            <input type="text" class="form-control search-slt" formControlName="mobileNumber" placeholder="Enter Mobile Number">
+                            <div *ngIf="login.mobileNumber.touched && login.mobileNumber.invalid" class="error">
+                                <div *ngIf="login.mobileNumber.errors && login.mobileNumber.errors.required">
+                                 Mobile Number is <strong>required</strong>
+                                </div>
+                            </div>
+                            <div *ngIf="login.mobileNumber.touched && login.mobileNumber.invalid" class="error">
+                                <div *ngIf="login.mobileNumber.errors && login.mobileNumber.errors.minlength">
+                                 Minimum 10 digits <strong>required</strong>
+                                </div>
+                            </div>
+                            <div *ngIf="login.mobileNumber.touched && login.mobileNumber.invalid" class="error">
+                                <div *ngIf="login.mobileNumber.errors && login.mobileNumber.errors.maxlength">
+                                 Maximum 10 digits <strong>required</strong>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-12 p-0">
+                            <input type="password" class="form-control search-slt" formControlName="password" placeholder="Enter Password">
+                            <div *ngIf="login.password.touched && login.password.invalid" class="error">
+                                <div *ngIf="login.password.errors && login.password.errors.required">
+                               Password is <strong>required</strong>
+                                </div>
+                            </div>
+                        </div>
+                       
+                        <div class="col-lg-4 col-md-4 col-sm-12 p-0">
+                            <button type="submit" class="btn btn-danger wrn-btn" [disabled]="loginForm.invalid">Login</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+
+<app-loader [loader]="loader"></app-loader>
+<app-alert [sharedAlert]="foodService.showAlert" *ngIf="foodService.showAlert?.modalShow"></app-alert>
+

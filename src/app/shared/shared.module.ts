@@ -8,7 +8,7 @@ import { HeaderComponent } from '../shared/header/header.component';
 import { FooterComponent } from '../shared/footer/footer.component';
 import { AlertComponent } from '../shared/alert/alert.component';
 import { LoaderComponent } from '../shared/loader/loader.component';
-// import { AuthGuardService } from '../services/auth-guard.service';
+//import { AuthGuardService } from '../services/auth-guard.service';
 
 @NgModule({
   declarations: [AlertComponent, LoaderComponent, HeaderComponent, FooterComponent],
