@@ -9,7 +9,7 @@ import { retry, catchError } from 'rxjs/operators';
 export class FoodCartService {
   showAlert;
   loginAPI = 'http://10.117.189.28:8085/foodie/login';
-  getAllVendorAPI = 'http://10.117.189.28:8085/myflight/customers/login';
+  getAllVendorAPI = 'http://10.117.189.227:8085/foodie/vendors';
 
 
   constructor(private http: HttpClient) {
