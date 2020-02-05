@@ -13,6 +13,7 @@ import Swal from 'sweetalert2';
 export class AdminComponent implements OnInit {
   loader = false;
   vendorList: VendorListResponse;
+  display = false;
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
@@ -23,15 +24,21 @@ export class AdminComponent implements OnInit {
   getAllVendors() {
     this.loader = true;
     this.foodService.getAllVendors().subscribe(res => {
+      console.log(res);
       this.loader = false;
-      this.vendorList = res;
+      this.vendorList = res.listofvendors;
     },
       error => {
         this.loader = false;
       });
   }
 
+  addNewVendor() {
+    this. display = true;
+  }
+
   ngOnInit() {
+    this.getAllVendors();
     // tslint:disable-next-line: max-line-length
     this.elementRef.nativeElement.ownerDocument.body.style.background = 'linear-gradient(to right bottom, #cfcbc9 ,#ff6200,#ff6200,#cfcbc9) fixed center';
     /* Check whether login/not */
@@ -39,7 +46,7 @@ export class AdminComponent implements OnInit {
     if (!this.foodService.validUser()) {
        this.router.navigate(['/login']);
      } else {
-       if (user.role === 'Admin') {
+      if (user.role === 'Admin') {
         this.router.navigate(['/admin']);
        } else {
         this.router.navigate(['/vendors']);
