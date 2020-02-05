@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FoodCartService } from './../../../services/food-cart.service';
+import { MenuList,MenuListResposne } from '../../../models/models';
 
 @Component({
   selector: 'app-menus',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenusComponent implements OnInit {
   incrementer = 1;
-  constructor() { }
+  menuItems;
+  
+  constructor(private foodServices: FoodCartService) { }
 
   ngOnInit() {
+    this.getVendorMenus();
   }
 
   // addQuentity() {
@@ -23,5 +28,13 @@ export class MenusComponent implements OnInit {
   //   this.incrementer++;
   //   alert(this.incrementer);
   // }
+
+  getVendorMenus() {
+    this.foodServices.getMenuList(1).subscribe(
+      (res: MenuListResposne) => {
+        this.menuItems = res.menuList;
+      }
+    );
+  }
 
 }

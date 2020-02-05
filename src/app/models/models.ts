@@ -25,3 +25,16 @@ export interface VendorList {
     vendorName: string;
     vendorId: number;
 }
+
+export interface MenuListResposne {
+    statusCode: number;
+    message: string;
+    menuList: MenuList[];
+}
+
+export interface MenuList {
+    menuId: number;
+    menuName: string;
+    menuPrice: number;
+
+}
