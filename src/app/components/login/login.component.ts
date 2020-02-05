@@ -40,12 +40,12 @@ export class LoginComponent implements OnInit {
       console.log(user);
       if (user) {
         const userDetails = {
-          customerName: user.customerName,
-          customerId: user.customerId,
+          customerName: user.userName,
+          customerId: user.userId,
           role: user.role
         };
         if (user.role === 'Customer') {
-          this.router.navigate(['/dashboard']);
+          this.router.navigate(['/vendors']);
         }
         if (user.role === 'Admin') {
           this.router.navigate(['/admin']);
