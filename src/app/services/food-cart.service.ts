@@ -8,11 +8,8 @@ import { retry, catchError } from 'rxjs/operators';
 })
 export class FoodCartService {
   showAlert;
-  searchAPI = 'http://10.117.189.28:8085/myflight/flights';
   loginAPI = 'http://10.117.189.28:8085/myflight/customers/login';
-  cancelAPI = 'http://10.117.189.28:8085/myflight/tickets';
-  addPassenger = 'http://10.117.189.28:8085/myflight/tickets/passengers';
-  payments = 'http://10.117.189.28:8085/myflight/tickets/pay';
+
 
   constructor(private http: HttpClient) {
   }
@@ -24,6 +21,18 @@ export class FoodCartService {
       'Content-Type': 'application/json'
     })
   };
+
+  /*
+  * @param data
+  * Validate Login API
+  * POST Method
+  * Type Object
+  */
+ checkLogin(data): Observable<any> {
+  return this.http.post(this.loginAPI, data, this.httpOptions).pipe(
+    catchError(this.errorHandler.bind(this))
+  );
+}
 
   /*
      * @param error
