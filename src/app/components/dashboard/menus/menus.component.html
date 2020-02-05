@@ -1,6 +1,8 @@
 <div class="container">
     <div class="row  my-3">
-        <div class="col-12">  <h5 class="text-center">Menu List</h5></div>
+        <div class="col-12">
+            <h5 class="text-center">Menu List</h5>
+        </div>
     </div>
     <div class="row">
         <div class="col-lg-7">
@@ -12,29 +14,53 @@
                             alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title">Hyderabad Dum biriyani</h5>
-                           <div>
-                               <span class="float-left">&#8377; 546</span> 
-                               <span class="addQuentity float-right px-1" (click)="addQuentity()">
-                                   <!-- <span *ngIf="incrementer != 0" class="decress px-1"  (click)="decress()"> - </span> -->
-                               <!-- <span *ngIf="incrementer == 0">Add</span>
+                            <div>
+                                <span class="float-left"><i>Price </i>&#8377; 546</span>
+                                <!-- <span class="addQuentity float-right px-1" (click)="addQuentity()"> -->
+                                <!-- <span *ngIf="incrementer != 0" class="decress px-1"  (click)="decress()"> - </span> -->
+                                <!-- <span *ngIf="incrementer == 0">Add</span>
                                <span *ngIf="incrementer != 0">{{incrementer}} -->
-
-                                <input type="text" name="incrementer" [(ngModel)]="incrementer">
-                               <!-- </span> -->
+                                <span class="float-right">
+                                    <label for="">Qty: </label><input type="text" class=" inputwidth" name="incrementer"
+                                        [(ngModel)]="incrementer"></span>
+                                <!-- </span> -->
                                 <!-- <span *ngIf="incrementer != 0" class="incress px-1" (click)="incress()"> + </span> -->
-                               </span>
-                           </div>
+                                <!-- </span> -->
+                            </div>
 
                         </div>
                     </div>
                 </div>
-
-
-
             </div>
-
         </div>
-        <div class="col-lg-5"></div>
+        <div class="col-lg-5">
+            <div class="row">
+                <div class="col ">
+
+                    <div class="card float-right border-0" style="width: 18rem;">
+                        <h3>Cart</h3>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-4"> <span class="card-title">Hyderabad Dum biriyani</span></div>
+                                <div class="col-4"> <span class="float-right">
+                                        <label for="">Qty: </label><input type="text" class=" inputwidth"
+                                            name="incrementer" [(ngModel)]="incrementer"></span>
+                                </div>
+                                <div class="col-4"> <span class="float-left">&#8377; 546</span></div>
+                            </div>
+
+
+
+
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </div>
 </div>

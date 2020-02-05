@@ -6,22 +6,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./menus.component.css']
 })
 export class MenusComponent implements OnInit {
-  incrementer = 0;
+  incrementer = 1;
   constructor() { }
 
   ngOnInit() {
   }
 
-  addQuentity() {
-    this.incrementer = 1;
-  }
-  decress() {
-   this.incrementer--;
-   alert(this.incrementer);
-  }
-  incress() {
-    this.incrementer++;
-    alert(this.incrementer);
-  }
+  // addQuentity() {
+  //   this.incrementer = 1;
+  // }
+  // decress() {
+  //  this.incrementer--;
+  //  alert(this.incrementer);
+  // }
+  // incress() {
+  //   this.incrementer++;
+  //   alert(this.incrementer);
+  // }
 
 }
