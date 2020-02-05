@@ -6,11 +6,7 @@ const routes: Routes = [
   {
     path: '',
     component: DashboardComponent
-  },
-  {
-    path: 'dashboard',
-    component: DashboardComponent
-  },
+  }
 ];
 
 @NgModule({
