@@ -11,6 +11,7 @@ export class FoodCartService {
   loginAPI = 'http://10.117.189.28:8085/foodie/login';
   getAllVendorAPI = 'http://10.117.189.227:8085/foodie/vendors';
   menuList = 'http://10.117.189.28:8085/foodie/vendors';
+  getMenuItemAPI = 'http://10.117.189.28:8085/foodie/vendors/menu';
 
 
 
@@ -61,6 +62,12 @@ export class FoodCartService {
     );
   }
 
+  getCartItems(menuId): Observable<any> {
+    return this.http.get(this.getMenuItemAPI + '/' + menuId, this.httpOptions).pipe(
+      catchError(this.errorHandler.bind(this))
+    );
+  }
+  
   /*
      * @param error
      * Error Handling
