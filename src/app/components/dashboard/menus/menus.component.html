@@ -1,1 +1,40 @@
-<p>menus works!</p>
+<div class="container">
+    <div class="row  my-3">
+        <div class="col-12">  <h5 class="text-center">Menu List</h5></div>
+    </div>
+    <div class="row">
+        <div class="col-lg-7">
+            <div class="row">
+                <div class="col">
+                    <div class="card" style="width: 18rem;">
+                        <img class="card-img-top"
+                            src="https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_366,h_240,c_fill/iili5edudt7iuykrx9db"
+                            alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">Hyderabad Dum biriyani</h5>
+                           <div>
+                               <span class="float-left">&#8377; 546</span> 
+                               <span class="addQuentity float-right px-1" (click)="addQuentity()">
+                                   <!-- <span *ngIf="incrementer != 0" class="decress px-1"  (click)="decress()"> - </span> -->
+                               <!-- <span *ngIf="incrementer == 0">Add</span>
+                               <span *ngIf="incrementer != 0">{{incrementer}} -->
+
+                                <input type="text" name="incrementer" [(ngModel)]="incrementer">
+                               <!-- </span> -->
+                                <!-- <span *ngIf="incrementer != 0" class="incress px-1" (click)="incress()"> + </span> -->
+                               </span>
+                           </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+        </div>
+        <div class="col-lg-5"></div>
+
+    </div>
+</div>
