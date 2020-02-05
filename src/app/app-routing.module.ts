@@ -17,8 +17,8 @@ const routes: Routes = [
   },
   {
     path: 'vendors',
-    loadChildren: () => import(`./components/dashboard/dashboard.module`).then(m => m.DashboardModule)
-    
+    loadChildren: () => import(`./components/dashboard/dashboard.module`).then(m => m.DashboardModule),
+    canActivate: [AuthGuardService]
   },
   {
     path: 'orders',
