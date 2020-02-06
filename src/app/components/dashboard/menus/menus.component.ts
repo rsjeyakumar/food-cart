@@ -69,29 +69,34 @@ export class MenusComponent implements OnInit {
   }
 
   placeOrder() {
-
-    let menuList =this.cart;
-
-    menuList.forEach(
-      (item) => {
-        menuList.quantity=menuList.quantityPrice;
-        delete menuList.menuName;
-        delete menuList.menuPrice;
-        delete menuList.quantityPrice;
-      }
-    );
-
-    this.placeorder = {
-      vendorId: 6,
-      menuList: menuList,
-      paymentType: 'Paytem'
-    };
-    this.foodServices.payment(this.placeOrder, 4).subscribe(
-      res => {
-
-      }
-    )
+    const menuList = this.cart;
+    console.log(menuList);
   }
+
+  // placeOrder() {
+
+  //   let menuList =this.cart;
+
+  //   menuList.forEach(
+  //     (item) => {
+  //       menuList.quantity=menuList.quantityPrice;
+  //       delete menuList.menuName;
+  //       delete menuList.menuPrice;
+  //       delete menuList.quantityPrice;
+  //     }
+  //   );
+
+  //   this.placeorder = {
+  //     vendorId: 6,
+  //     menuList: menuList,
+  //     paymentType: 'Paytem'
+  //   };
+  //   this.foodServices.payment(this.placeOrder, 4).subscribe(
+  //     res => {
+
+  //     }
+  //   )
+  // }
 
   subTotal() {
     this.subtotal = this.cart.reduce((total, currentValue) => {
@@ -116,7 +121,7 @@ export class MenusComponent implements OnInit {
     if (!this.foodServices.validUser()) {
       this.router.navigate(['/login']);
     } else {
-      if (user.role === 'Admin') {
+      if (user.role === 'ADMIN') {
         this.router.navigate(['/admin']);
       } else {
         this.router.navigate(['/vendors/menus']);
@@ -126,7 +131,8 @@ export class MenusComponent implements OnInit {
   }
 
   getVendorMenus() {
-    this.foodServices.getMenuList(1).subscribe(
+    const vendorId = sessionStorage.getItem('currentVendor');
+    this.foodServices.getMenuList(vendorId).subscribe(
       (res: MenuListResposne) => {
         this.menuItems = res.menuList;
       }

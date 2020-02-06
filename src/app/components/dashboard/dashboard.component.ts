@@ -19,8 +19,9 @@ export class DashboardComponent implements OnInit {
     public foodService: FoodCartService
   ) {}
 
-   vendorDetails() {
+   vendorDetails(vendorId) {
     this.router.navigate(['/vendors/menus']);
+    sessionStorage.setItem('currentVendor', vendorId);
   }
 
   showAllVendors() {
@@ -42,7 +43,7 @@ export class DashboardComponent implements OnInit {
     if (!this.foodService.validUser()) {
        this.router.navigate(['/login']);
      } else {
-      if (user.role === 'Admin') {
+      if (user.role === 'ADMIN') {
         this.router.navigate(['/admin']);
        } else {
         this.router.navigate(['/vendors']);

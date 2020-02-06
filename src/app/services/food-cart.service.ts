@@ -12,9 +12,8 @@ export class FoodCartService {
   getAllVendorAPI = 'http://10.117.189.28:8085/foodie/vendors';
   menuList = 'http://10.117.189.28:8085/foodie/vendors';
   getMenuItemAPI = 'http://10.117.189.28:8085/foodie/vendors/menu';
-
-  paymentapi = 'http://10.117.189.28/foodie/customer';
-
+  paymentapi = 'http://10.117.189.28:8085/foodie/customer';
+  myOrdersAPI = 'http://10.117.189.28:8085/foodie/customer';
 
 
   constructor(private http: HttpClient) {
@@ -76,8 +75,8 @@ export class FoodCartService {
     );
   }
 
-  getCartItems(menuId): Observable<any> {
-    return this.http.get(this.getMenuItemAPI + '/' + menuId, this.httpOptions).pipe(
+  getMyOrders(userId): Observable<any> {
+    return this.http.get(this.myOrdersAPI + '/' + userId + '/' + 'orders', this.httpOptions).pipe(
       catchError(this.errorHandler.bind(this))
     );
   }
