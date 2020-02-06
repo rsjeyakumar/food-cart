@@ -6,7 +6,7 @@
         <div class=" border p-0">
             <img class="card-img-top rounded-0" [src]="vendor.image" alt="Card image cap">
             <div class="card-body  text-center">
-                <b class="card-text" (click)="vendorDetails()">{{vendor.vendorName}}</b>
+                <b class="card-text" (click)="vendorDetails(vendor.vendorId)">{{vendor.vendorName}}</b>
             </div>
         </div>
     </div>
