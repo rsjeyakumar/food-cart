@@ -16,6 +16,10 @@ export class AdminComponent implements OnInit {
   display = false;
   addVendor: FormGroup;
   submitted = false;
+  displayMenu = false;
+  selectedVendor: number;
+  menuList;
+  // addVendor: FormGroup;
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
@@ -35,9 +39,24 @@ export class AdminComponent implements OnInit {
       });
   }
 
+
   addNewVendor() {
     this.display = true;
   }
+
+  viewMenu(vendorId) {
+    this.displayMenu = true;
+    this.selectedVendor = vendorId;
+    this.foodService.getMenuList(vendorId).subscribe(res => {
+      console.log(res);
+      this.loader = false;
+      this.menuList = res.menuList;
+    },
+      error => {
+        this.loader = false;
+      });
+    }
+
 
   ngOnInit() {
     this.getAllVendors();
