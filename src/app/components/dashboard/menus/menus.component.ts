@@ -73,6 +73,21 @@ export class MenusComponent implements OnInit {
     console.log(menuList);
   }
 
+  // {
+  //   vendorId:Long
+  //   menuList:[
+  //   {
+  //   menuId:Long,
+  //   quantity:Integer
+  //   },
+  //   {
+  //   menuId:Long,
+  //   quantity:Integer
+  //   },
+  //   ],
+  //   paymentType:String
+  //   }
+
   // placeOrder() {
 
   //   let menuList =this.cart;
