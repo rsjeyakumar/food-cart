@@ -32,7 +32,7 @@
             <h4>Cart</h4>
             <div class="card mt-3">
                 <div class="card-body col-sm-12">      
-                    {{this.cart | json}}           
+                             
                     <!-- <form [formGroup]="checkoutForm" (ngSubmit)="checkout();"> -->                     
                     <div class="row" *ngFor="let cart of cart">
                         <div class="col-lg-4     col-md-4 col-sm-12 p-0">
@@ -46,7 +46,7 @@
                         <div class="col-lg-4 col-md-4 col-sm-12 p-0">
                             <h5 class="card-title text-info">Quantity</h5>
                             <span class="card-title">
-                                <input type="text" style="width:100px;" (blur)="changeQuantity(cart,$event);" [value]="cart.quantity" class="form-control">
+                                <input type="text" style="width:100px;" [disabled]=true (blur)="changeQuantity(cart,$event);" [value]="cart.quantity" class="form-control">
                             </span>
                             <a href="javascript:void(0)" (click)="removeCart(cart.menuId)">remove</a>
                         </div>

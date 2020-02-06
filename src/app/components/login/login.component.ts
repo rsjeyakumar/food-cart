@@ -71,6 +71,17 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.createForm();
+    /* Check whether login/not */
+    const user = JSON.parse(sessionStorage.getItem('currentUser'));
+    if (!this.foodService.validUser()) {
+       this.router.navigate(['/login']);
+     } else {
+      if (user.role === 'ADMIN') {
+        this.router.navigate(['/admin']);
+       } else {
+        this.router.navigate(['/vendors']);
+       }
+     }
   }
 
 }
