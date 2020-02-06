@@ -28,6 +28,77 @@ margin-bottom: 3%;">
     </p-table>
 </section>
 
+
+<p-dialog header="Add New Vendor" [(visible)]="display" [modal]="true" [style]="{width: '50vw'}" [maximizable]="true"
+    [baseZIndex]="10000" [draggable]="false" [resizable]="false">
+    <form [formGroup]="addVendor">
+
+        <div class="form-row">
+            <div class="col">
+                <input type="text" formControlName="vendorName" class="form-control" placeholder="Vendor Name">
+            </div>
+            <div class="col">
+                <input type="text" formControlName="vendorImage" class="form-control" placeholder="Vendor Image Url">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col">
+                <p class="my-4"><b>Add Menu Items</b></p>
+            </div>
+            <div class="col mt-5">
+                <label for="NumberofMenus">Number of Menus</label>
+               <select name="" id="NumberofMenus" formControlName="numberOfMenus" class="form-control" (change)="onChangeTickets($event)" [ngClass]="{ 'is-invalid': submitted && f.numberOfMenus.errors }">
+                   <option value="1">1</option>
+                   <option value="2">2</option>
+                   <option value="3">3</option>
+                   <option value="4">4</option>
+               </select>
+            </div>
+        </div>
+
+        <div class="form-row addnewmenu" >
+            <div *ngFor="let ticket of t.controls; let i = index" class="list-group list-group-flush">
+                <div class="list-group-item">
+                    <h5 class="card-title">Menu {{i + 1}}</h5>
+                    <div [formGroup]="ticket" class="form-row">
+                        <div class="form-group col-6">
+                            <label>Menu Name</label>
+                            <input type="text" formControlName="menuName" class="form-control" [ngClass]="{ 'is-invalid': submitted && ticket.controls.menuName.errors }" />
+                            <div *ngIf="submitted && ticket.controls.menuName.errors" class="invalid-feedback">
+                                <div *ngIf="ticket.controls.menuName.errors.required">Menu Name is required</div>
+                            </div>
+                        </div>
+                        <div class="form-group col-6">
+                            <label>Price</label>
+                            <input type="text" formControlName="menuPrice" class="form-control" [ngClass]="{ 'is-invalid': submitted && ticket.controls.menuPrice.errors }" />
+                            <div *ngIf="submitted && ticket.controls.menuPrice.errors" class="invalid-feedback">
+                                <div *ngIf="ticket.controls.menuPrice.errors.required">Price is required</div>
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+       
+        
+        
+        
+
+        <div class="form-row my-2">
+            <button type="submit" class="btn btn-primary" (click)="addVendormenu()">Submit</button>
+        </div>
+         <div class="form-group">
+            <label for="exampleInputEmail1">Vendor Name</label>
+            <input type="text" formControlName="vendorName" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                placeholder="Enter Vendor Name" required>
+        </div> 
+
+    </form>
+</p-dialog>
+
 <p-dialog header="Menu Details" [(visible)]="displayMenu" [modal]="true" [style]="{width: '50vw'}" [maximizable]="true"
     [baseZIndex]="10000" [draggable]="false" [resizable]="false">
     <p-table [value]="menuList">
