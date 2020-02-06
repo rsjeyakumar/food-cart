@@ -8,13 +8,13 @@ import { retry, catchError } from 'rxjs/operators';
 })
 export class FoodCartService {
   showAlert;
-  loginAPI = 'http://10.117.189.28:8085/foodie/login';
-  getAllVendorAPI = 'http://10.117.189.28:8085/foodie/vendors';
-  menuList = 'http://10.117.189.28:8085/foodie/vendors';
-  getMenuItemAPI = 'http://10.117.189.28:8085/foodie/vendors/menu';
-  paymentapi = 'http://10.117.189.28:8085/foodie/customer';
-  myOrdersAPI = 'http://10.117.189.28:8085/foodie/customer';
-  addVendorapi = 'http://10.117.189.28:8085/foodie/admins/menu';
+  loginAPI = 'http://52.66.140.63:8085/foodie/login';
+  getAllVendorAPI = 'http://52.66.140.63:8085/foodie/vendors';
+  menuList = 'http://52.66.140.63:8085/foodie/vendors';
+  getMenuItemAPI = 'http://52.66.140.63:8085/foodie/vendors/menu';
+  paymentapi = 'http://52.66.140.63:8085/foodie/customer';
+  myOrdersAPI = 'http://52.66.140.63:8085/foodie/customer';
+  addVendorapi = 'http://52.66.140.63:8085/foodie/admins/menu';
 
 
   constructor(private http: HttpClient) {
