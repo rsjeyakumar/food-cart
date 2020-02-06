@@ -29,8 +29,8 @@ export class HeaderComponent implements OnInit {
     });
   }
 
-  goToCancelTickets() {
-    this.router.navigate(['/cancel']);
+  myOrders() {
+    this.router.navigate(['/orders']);
   }
 
   /* logout */

@@ -38,3 +38,15 @@ export interface MenuList {
     menuPrice: number;
 
 }
+
+
+export interface Orders {
+    vendorId: number;
+    menuList: OrderMenu[];
+    paymentType: string;
+}
+
+export interface OrderMenu {
+    menuId: number;
+    quantity: number;
+}

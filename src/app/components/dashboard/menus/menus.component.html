@@ -8,15 +8,19 @@
         <div class="col-lg-7">
             <div class="row">
                 <div class="col-lg-5" *ngFor="let menu of menuItems">
-                    <div class="card m-1 p-1">
+                    <div class="card m-2 p-2">                       
                         <img class="card-img-top"
                             src="https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_366,h_240,c_fill/iili5edudt7iuykrx9db"
                             alt="Card image cap">
                         <div class="card-body">
-                            <h5 class="card-title">{{menu.menuName}}</h5>                            <div>
-                                <span class="float-left"><i>Price </i>&#8377; {{menu.menuPrice}}</span>                              
-                                <span class="float-right">
-                                    <span>Add</span></span>                               
+                            <h5 class="card-title">{{menu.menuName}}</h5>                            
+                            <div>
+                                <span class="float-left"><i>Price </i>&#8377; {{menu.menuPrice}}</span>                                                        
+                            </div>
+                            <div>                           
+                                <span  style="margin-top:20px;" class="float-left">
+                                    <span><button type="button" class="btn btn-primary" (click)="addToCart(menu)">Add To Cart</button></span>
+                                </span>                               
                             </div>
 
                         </div>
@@ -24,33 +28,33 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-5">
-            <div class="row">
-                <div class="col ">
-
-                    <div class="card float-right border-0" style="width: 18rem;">
-                        <h3>Cart</h3>
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-4"> <span class="card-title">Hyderabad Dum biriyani</span></div>
-                                <div class="col-4"> <span class="float-right">
-                                        <label for="">Qty: </label><input type="text" class=" inputwidth"
-                                            name="incrementer" [(ngModel)]="incrementer"></span>
-                                </div>
-                                <div class="col-4"> <span class="float-left">&#8377; 546</span></div>
-                            </div>
-
-
-
-
-
-
-
-
+        <div class="col-lg-5" *ngIf="cart.length">
+            <h4>Cart</h4>
+            <div class="card mt-3">
+                <div class="card-body col-sm-12">      
+                    {{this.cart | json}}           
+                    <!-- <form [formGroup]="checkoutForm" (ngSubmit)="checkout();"> -->                     
+                    <div class="row" *ngFor="let cart of cart">
+                        <div class="col-lg-4     col-md-4 col-sm-12 p-0">
+                            <h5 class="card-title text-info">Item</h5>
+                            <span class="card-title">{{cart.menuName}}</span>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-12 p-0">
+                            <h5 class="card-title text-info">Price</h5>
+                            <span class="card-title">{{cart.quantityPrice}}</span>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-12 p-0">
+                            <h5 class="card-title text-info">Quantity</h5>
+                            <span class="card-title">
+                                <input type="text" style="width:100px;" (blur)="changeQuantity(cart,$event);" [value]="cart.quantity" class="form-control">
+                            </span>
+                            <a href="javascript:void(0)" (click)="removeCart(cart.menuId)">remove</a>
                         </div>
                     </div>
+                    <button type="submit" class="btn btn-danger wrn-btn" (click)="placeOrder()">Proceed To Pay : {{subtotal}}</button>
+                    <!-- </form> -->
                 </div>
-            </div>
+              </div> 
         </div>
 
     </div>

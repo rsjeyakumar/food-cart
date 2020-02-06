@@ -6,10 +6,10 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarCollapse">
     <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
+        <!-- <li class="nav-item">
             <a href="javascript:void(0);" class="nav-link text-white" (click)="goToCancelTickets();">Cancel Tickets
             </a>
-        </li>
+        </li> -->
     </ul>
 </div>
   <form class="form-inline my-2 my-lg-0">
@@ -20,7 +20,7 @@
           <b class="caret"></b>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a *ngIf="userDetails && userDetails?.role === 'Customer'" href="#" class="nav-link dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
+          <a *ngIf="userDetails && userDetails?.role === 'CUSTOMER'" href="#" class="nav-link dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
             <a class="dropdown-item" href="javascript:void(0);" (click)="myOrders()">My Orders</a>
             <b class="caret"></b>
           </a>

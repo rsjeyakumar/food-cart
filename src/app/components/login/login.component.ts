@@ -44,10 +44,10 @@ export class LoginComponent implements OnInit {
           customerId: user.userId,
           role: user.role
         };
-        if (user.role === 'Customer') {
+        if (user.role === 'CUSTOMER') {
           this.router.navigate(['/vendors']);
         }
-        if (user.role === 'Admin') {
+        if (user.role === 'ADMIN') {
           this.router.navigate(['/admin']);
         }
         sessionStorage.setItem('currentUser', JSON.stringify(userDetails));
