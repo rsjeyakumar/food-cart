@@ -3,8 +3,12 @@ import { Routes, RouterModule } from '@angular/router';
 import { AuthGuardService } from '../app/services/auth-guard.service';
 const routes: Routes = [
   {
-    path: '',
+    path: 'login',
     loadChildren: () => import(`./components/login/login.module`).then(m => m.LoginModule)
+  },
+  {
+    path: '',
+    redirectTo: '/login', pathMatch: 'full'
   },
   {
     path: 'admin',
