@@ -1,3 +1,9 @@
+
+.addnewmenu{
+    height: 150px;
+    overflow: scroll;
+    margin-top: 16px;
+}
  /* Column Priorities */
  @media only all {
     th.ui-p-6,
@@ -62,4 +68,5 @@
     td.ui-p-6 {
         display: table-cell;
     }
+
 }
